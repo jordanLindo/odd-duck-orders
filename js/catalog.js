@@ -2,8 +2,18 @@
 
 'use strict';
 
+let cart;
+
 // Set up an empty cart for use on this page.
-const cart = new Cart([]);
+function loadCart() {
+  const cartItems = localStorage.getItem('cart');
+  if (cartItems === null) {
+    cart = new Cart([]);
+  } else {
+    cart = new Cart(JSON.parse(cartItems));
+    updateCartPreview();
+  }
+}
 
 // On screen load, we call this method to put all of the product options
 // (the things in the Product.allProducts array) into the drop down list.
@@ -57,3 +67,4 @@ catalogForm.addEventListener('submit', handleSubmit);
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.
 populateForm();
+loadCart();

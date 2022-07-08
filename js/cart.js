@@ -6,9 +6,18 @@ const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 let cart;
 
+// function loadCart() {
+//   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+//   cart = new Cart(cartItems);
+// }
+
 function loadCart() {
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-  cart = new Cart(cartItems);
+  const cartItems = localStorage.getItem('cart');
+  if (cartItems === null) {
+    cart = new Cart([]);
+  } else {
+    cart = new Cart(JSON.parse(cartItems));
+  }
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
