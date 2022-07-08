@@ -2,19 +2,30 @@
 
 'use strict';
 
+let cart;
+
 // Set up an empty cart for use on this page.
-const cart = new Cart([]);
+function loadCart() {
+  const cartItems = localStorage.getItem('cart');
+  if (cartItems === null) {
+    cart = new Cart([]);
+  } else {
+    cart = new Cart(JSON.parse(cartItems));
+    updateCartPreview();
+  }
+}
 
 // On screen load, we call this method to put all of the product options
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
-
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in Product.allProducts) {
-
+    let option = document.createElement('option');
+    option.innerText = Product.allProducts[i].name
+    option.value = Product.allProducts[i].name
+    selectElement.appendChild(option);
   }
-
 }
 
 // When someone submits the form, we need to add the selected item to the cart
@@ -23,7 +34,7 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-
+  event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
   cart.saveToLocalStorage();
@@ -57,3 +68,4 @@ catalogForm.addEventListener('submit', handleSubmit);
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.
 populateForm();
+loadCart();

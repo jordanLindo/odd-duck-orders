@@ -1,5 +1,17 @@
 /* TODO: Make it awesome */
 
+
+table {
+  table-layout: fixed;
+  margin: auto;
+  border-collapse: collapse;
+}
+td, th {
+  /* border: 2px slategray solid; */
+  padding: .5em;
+  text-align: left;
+}
+
 /* colors
 
 #272643
@@ -9,3 +21,4 @@
 #2c698d
 
 */
+
