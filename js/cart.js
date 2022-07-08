@@ -44,10 +44,14 @@ function showCart() {
     // TODO: Create a TR
     let tableRow = document.createElement('tr');
     // TODO: Create a TD for the delete link, quantity,  and the item
-    let remove = document.createElement('td')
-    let quantity = document.createElement('td')
-    let item = document.createElement('td')
-    remove.innerText = 'X';
+    let remove = document.createElement('td');
+    let quantity = document.createElement('td');
+    let item = document.createElement('td');
+    let image = document.createElement('img');
+    image.src = './assets/redX.svg';
+    image.alt = 'Remove';
+    remove.appendChild(image);
+    remove.id = cart.items[i].product;
     quantity.innerText = cart.items[i].quantity;
     item.innerText = cart.items[i].product;
     // TODO: Add the TR to the TBODY and each of the TD's to the TR
@@ -60,11 +64,16 @@ function showCart() {
 }
 
 function removeItemFromCart(event) {
-
-  // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+  for (let i = 0; i < cart.items.length; i++) {
+    if (evt.target.id === cart.items[i].product) {
+      // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+      cart.removeItem(i);
+    }
+  }
   // TODO: Save the cart back to local storage
+  cart.saveToLocalStorage();
   // TODO: Re-draw the cart table
-
+  renderCart();
 }
 
 // This will initialize the page and draw the cart on screen
