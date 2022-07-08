@@ -64,9 +64,9 @@ function showCart() {
 }
 
 function removeItemFromCart(event) {
+  // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   for (let i = 0; i < cart.items.length; i++) {
     if (evt.target.id === cart.items[i].product) {
-      // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
       cart.removeItem(i);
     }
   }
