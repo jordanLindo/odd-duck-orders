@@ -12,18 +12,39 @@ td, th {
   text-align: left;
 }
 
+body > header:first-of-type > h1{
+  font-size: xx-large;
+  color: #272643;
+  margin-bottom: 1%;
+}
+
 body > header:first-of-type {
-  height: 90px;
+  height: 120px;
   background-color:#bae8e8;
 }
 
 
 nav > ul > li {
+  vertical-align: text-top;
   height: 40px;
   display: inline-block;
   padding: 1em;
   border-collapse: collapse;
   box-sizing: border-box;
+}
+
+li a {
+  color: #272643;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#itemCount{
+  display: block;
+  color: #272643;
+  text-align: center;
+
 }
 
 /* colors
