@@ -74,6 +74,21 @@ function updateCounter() {
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
+  let quantity = parseInt(document.getElementById("quantity").value);
+  if(quantity > 0){
+    let div = document.getElementById("cartContents");
+    div.innerHTML = "";
+    let item = document.getElementById("items").value;
+    let ul = document.createElement("ul");
+    cart.items.forEach(element => {
+      let li = document.createElement("li");
+      li.innerText = element.product+': '+element.quantity;
+      ul.appendChild(li);
+    });
+    div.appendChild(ul);
+  }
+
+
 }
 
 // Set up the "submit" event listener on the form.
