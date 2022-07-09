@@ -42,9 +42,9 @@ li a {
   display: block;
   color: #272643;
   text-align: center;
+}
 
-
-main h1 {
+main > h1 {
   font-size: 2rem;
   font-weight: bold;
 }
