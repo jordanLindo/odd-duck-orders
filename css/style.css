@@ -12,6 +12,20 @@ td, th {
   text-align: left;
 }
 
+body > header:first-of-type {
+  height: 90px;
+  background-color:#bae8e8;
+}
+
+
+nav > ul > li {
+  height: 40px;
+  display: inline-block;
+  padding: 1em;
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
+
 /* colors
 
 #272643
