@@ -52,8 +52,8 @@ function showCart() {
     let image = document.createElement('img');
     image.src = './assets/redX.svg';
     image.alt = 'Remove';
+    image.id = cart.items[i].product;
     remove.appendChild(image);
-    remove.id = cart.items[i].product;
     quantity.innerText = cart.items[i].quantity;
     item.innerText = cart.items[i].product;
     // TODO: Add the TR to the TBODY and each of the TD's to the TR
