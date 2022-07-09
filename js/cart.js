@@ -22,6 +22,7 @@ function loadCart() {
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
 function renderCart() {
+  console.log('renderCart')
   loadCart();
   clearCart();
   showCart();
@@ -29,16 +30,17 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-  let table = getElementByTagName('tbody');
-  table.innerhtml = '';
+  let tbody = document.querySelector('tbody');
+  tbody.innerText = '';
+  console.log('in clear');
 }
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
   // TODO: Find the table body
-  let table = getElementByTagName('tbody');
-  
+  let tbody = document.querySelector('tbody');
+
   // TODO: Iterate over the items in the cart
   for (let i = 0; i < cart.items.length; i++) {
     // TODO: Create a TR
@@ -50,30 +52,38 @@ function showCart() {
     let image = document.createElement('img');
     image.src = './assets/redX.svg';
     image.alt = 'Remove';
+    image.id = cart.items[i].product;
     remove.appendChild(image);
-    remove.id = cart.items[i].product;
     quantity.innerText = cart.items[i].quantity;
     item.innerText = cart.items[i].product;
     // TODO: Add the TR to the TBODY and each of the TD's to the TR
-    table.appendChild(remove);
-    table.appendChild(quantity);
-    table.appendChild(item);
-    table.appendChild(tableRow);
+    tableRow.appendChild(remove);
+    tableRow.appendChild(quantity);
+    tableRow.appendChild(item);
+    tbody.appendChild(tableRow);
   }
 
 }
 
 function removeItemFromCart(event) {
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+  console.log('in removeItemFromCart');
+  let cartChange = false;
   for (let i = 0; i < cart.items.length; i++) {
-    if (evt.target.id === cart.items[i].product) {
+    if (event.target.id === cart.items[i].product) {
+      console.log(i);
       cart.removeItem(i);
+      cartChange = true
     }
+    console.log(event.target.id);
   }
-  // TODO: Save the cart back to local storage
-  cart.saveToLocalStorage();
-  // TODO: Re-draw the cart table
-  renderCart();
+  if (cartChange){
+    // TODO: Save the cart back to local storage
+    cart.saveToLocalStorage();
+    // TODO: Re-draw the cart table
+    renderCart();
+    console.log(cartChange)
+  }
 }
 
 // This will initialize the page and draw the cart on screen

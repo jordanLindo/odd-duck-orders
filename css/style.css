@@ -1,16 +1,13 @@
 /* TODO: Make it awesome */
-
-
-table {
-  table-layout: fixed;
-  margin: auto;
-  border-collapse: collapse;
+* {
+  box-sizing: border-box;
 }
-td, th {
-  /* border: 2px slategray solid; */
-  padding: .5em;
-  text-align: left;
+body {
+  background-color: #2c698d;
+  color: #272643;
+  font-size: 1.5rem;
 }
+
 
 body > header:first-of-type > h1{
   font-size: xx-large;
@@ -20,9 +17,9 @@ body > header:first-of-type > h1{
 
 body > header:first-of-type {
   height: 120px;
+
   background-color:#bae8e8;
 }
-
 
 nav > ul > li {
   vertical-align: text-top;
@@ -32,6 +29,7 @@ nav > ul > li {
   border-collapse: collapse;
   box-sizing: border-box;
 }
+
 
 li a {
   color: #272643;
@@ -44,6 +42,50 @@ li a {
   display: block;
   color: #272643;
   text-align: center;
+
+
+main h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+main {
+  display: grid;
+  grid-template: auto auto/1fr 2fr;
+  max-width: 1440px;
+  margin: auto;
+  line-height: 2rem;
+}
+.col-1 {
+  grid-column: 1/2;
+}
+.col-2 {
+  grid-column: 2/3;
+}
+.card {
+  margin: 1rem 0.5rem;
+  border: .25rem solid #272643;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: #e3f6f5;
+}
+ol {
+  list-style: decimal;
+  margin: 0 0 0 1.5rem;
+}
+
+table {
+  table-layout: fixed;
+  margin: auto;
+  border-collapse: collapse;
+}
+td, th {
+  padding: .5em;
+  text-align: left;
+  border-bottom: 1px solid #2c698d;
+  text-align: left;
+}
+table img {
+  max-width: 2rem;
 
 }
 
