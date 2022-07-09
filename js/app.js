@@ -85,15 +85,6 @@ function generateCatalog() {
   new Product('assets/water-can.jpg', 'Water Can');
   new Product('assets/wine-glass.jpg', 'Wine Glass');
 
-
-/*
-  let items = [];
-  Product.allProducts.forEach(element => {
-    items.push(new CartItem(element.name, 3));
-  });
-  let cart = new Cart(items);
-  cart.saveToLocalStorage();
-  */
 }
 
 // Initialize the app by creating the big list of products with images and names
