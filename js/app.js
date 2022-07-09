@@ -39,11 +39,13 @@ Cart.prototype.removeItem = function(item) {
     items.push(new CartItem(element.product, element.quantity));
   }
 
-  //swap with end
-  let end = items.length-1;
-  let temp = new CartItem(items[posFound].product, items[posFound].quantity);
-  items[posFound] = new CartItem(items[end].product, items[end].quantity);
-  items[end] = temp;
+  // Bubble selected item to the end of the list
+  for (let i = posFound; i < items.length-1; i++) {
+    let temp = new CartItem(items[i].product, items[i].quantity);
+    items[i] = new CartItem(items[i+1].product, items[i+1].quantity);
+    items[i+1] = temp;
+    
+  }
   items.pop();
   this.items = items;
   
@@ -83,6 +85,15 @@ function generateCatalog() {
   new Product('assets/water-can.jpg', 'Water Can');
   new Product('assets/wine-glass.jpg', 'Wine Glass');
 
+
+/*
+  let items = [];
+  Product.allProducts.forEach(element => {
+    items.push(new CartItem(element.name, 3));
+  });
+  let cart = new Cart(items);
+  cart.saveToLocalStorage();
+  */
 }
 
 // Initialize the app by creating the big list of products with images and names
